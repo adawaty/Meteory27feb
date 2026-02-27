@@ -46,7 +46,7 @@ const translations: Record<string, { en: string; ar: string }> = {
   "hero.subtitle": { en: "Fire Protection — Built for Compliance", ar: "منشآت — مبنية على الالتزام بالمعايير" },
   "hero.desc": {
     en: "Fire extinguishers, cabinets, suppression systems, and pump accessories—engineered for inspections, reliability, and fast procurement.",
-    ar: "طفايات وخزائن وأنظمة إخماد وملحقات مضخات—مصممة للاعتمادات، الاعتمادية، وسرعة التوريد."
+    ar: "أجهزة اطفاء حريق وخزائن وأنظمة إخماد وملحقات مضخات—مصممة للاعتمادات، الاعتمادية، وسرعة التوريد."
   },
   "hero.cta.products": { en: "Browse Products", ar: "تصفح المنتجات" },
   "hero.cta.contact": { en: "Get a Quote", ar: "اطلب عرض سعر" },
@@ -132,7 +132,7 @@ const translations: Record<string, { en: string; ar: string }> = {
   "products.catalog": { en: "Product Catalog", ar: "كتالوج المنتجات" },
   "products.desc": { en: "Explore our comprehensive range of certified firefighting equipment designed for maximum reliability.", ar: "استكشف مجموعتنا الشاملة من معدات مكافحة الحرائق المعتمدة المصممة لأقصى درجات الموثوقية." },
   "products.filter.all": { en: "All Products", ar: "كل المنتجات" },
-  "products.filter.extinguisher": { en: "Fire Extinguishers", ar: "طفايات الحريق" },
+  "products.filter.extinguisher": { en: "Fire Extinguishers", ar: "أجهزة اطفاء حريق" },
   "products.filter.cabinet": { en: "Fire Cabinets", ar: "صناديق الحريق" },
   "products.filter.system": { en: "Systems", ar: "الأنظمة" },
   "products.features": { en: "Key Features", ar: "الميزات الرئيسية" },
@@ -145,9 +145,9 @@ const translations: Record<string, { en: string; ar: string }> = {
   "services.title": { en: "Our Services", ar: "خدماتنا" },
   "services.desc": { en: "Beyond manufacturing, we provide lifecycle support for your fire safety infrastructure.", ar: "بالإضافة إلى التصنيع، نقدم دعماً متكاملاً طوال دورة حياة البنية التحتية للسلامة من الحرائق لديك." },
   "services.mfg": { en: "Manufacturing", ar: "التصنيع" },
-  "services.mfg.desc": { en: "ISO 9001:2015 certified manufacturing of fire extinguishers (CO2, Powder, Foam) and cabinets using high-grade steel and automated welding lines.", ar: "تصنيع معتمد بشهادة ISO 9001:2015 لطفايات الحريق (ثاني أكسيد الكربون، البودرة، الرغوة) والصناديق باستخدام صلب عالي الجودة وخطوط لحام آلية." },
+  "services.mfg.desc": { en: "ISO 9001:2015 certified manufacturing of fire extinguishers (CO2, Powder, Foam) and cabinets using high-grade steel and automated welding lines.", ar: "تصنيع معتمد بشهادة ISO 9001:2015 لأجهزة اطفاء حريق (ثاني أكسيد الكربون، البودرة، الرغوة) والصناديق باستخدام صلب عالي الجودة وخطوط لحام آلية." },
   "services.maint": { en: "Maintenance & Refilling", ar: "الصيانة وإعادة التعبئة" },
-  "services.maint.desc": { en: "Comprehensive maintenance services including hydrostatic testing, refilling, and certification for all types of fire extinguishers.", ar: "خدمات صيانة شاملة تشمل الاختبار الهيدروستاتيكي، إعادة التعبئة، وإصدار الشهادات لجميع أنواع طفايات الحريق." },
+  "services.maint.desc": { en: "Comprehensive maintenance services including hydrostatic testing, refilling, and certification for all types of fire extinguishers.", ar: "خدمات صيانة شاملة تشمل الاختبار الهيدروستاتيكي، إعادة التعبئة، وإصدار الشهادات لجميع أنواع أجهزة اطفاء حريق." },
   "services.consult": { en: "Consulting & Design", ar: "الاستشارات والتصميم" },
   "services.consult.desc": { en: "Expert fire safety system design for industrial, commercial, and residential facilities in compliance with Egyptian Civil Defense codes.", ar: "تصميم أنظمة سلامة من الحرائق من قبل خبراء للمنشآت الصناعية والتجارية والسكنية وفقاً لأكواد الدفاع المدني المصري." },
   "services.train": { en: "Training", ar: "التدريب" },
@@ -174,7 +174,7 @@ const translations: Record<string, { en: string; ar: string }> = {
   "about.legacy": { en: "Our Legacy", ar: "إرثنا" },
   "about.legacy.desc": { en: "For over 45 years, Meteory has been the backbone of fire safety in Egypt and Africa.", ar: "لأكثر من 45 عاماً، كانت Meteory العمود الفقري للسلامة من الحرائق في مصر وأفريقيا." },
   "about.story.title": { en: "The Meteory Story", ar: "قصة Meteory" },
-  "about.story.p1": { en: "Meteory is an Egyptian based manufacturer of firefighting products and an integrated solutions provider with an expertise of 45 years. The company roots go back to the 70s of the 20th century. In 1980, Meteory became a specialized distributor and importer of products from Italy and Germany. By 1986, the company built its factory with state-of-the-art assembly lines to manufacture and market fire extinguishers to cover the increasing demand in the Egyptian Market.", ar: "ميتيوري هي شركة مصرية لتصنيع منتجات مكافحة الحرائق ومزود للحلول المتكاملة بخبرة 45 عامًا. تعود جذور الشركة إلى سبعينيات القرن العشرين. في عام 1980، أصبحت ميتيوري موزعًا ومستوردًا متخصصًا لمنتجات من إيطاليا وألمانيا. وبحلول عام 1986، قامت الشركة ببناء مصنعها بخطوط تجميع حديثة لتصنيع وتسويق طفايات الحريق لتلبية الطلب المتزايد في السوق المصري." },
+  "about.story.p1": { en: "Meteory is an Egyptian based manufacturer of firefighting products and an integrated solutions provider with an expertise of 45 years. The company roots go back to the 70s of the 20th century. In 1980, Meteory became a specialized distributor and importer of products from Italy and Germany. By 1986, the company built its factory with state-of-the-art assembly lines to manufacture and market fire extinguishers to cover the increasing demand in the Egyptian Market.", ar: "ميتيوري هي شركة مصرية لتصنيع منتجات مكافحة الحرائق ومزود للحلول المتكاملة بخبرة 45 عامًا. تعود جذور الشركة إلى سبعينيات القرن العشرين. في عام 1980، أصبحت ميتيوري موزعًا ومستوردًا متخصصًا لمنتجات من إيطاليا وألمانيا. وبحلول عام 1986، قامت الشركة ببناء مصنعها بخطوط تجميع حديثة لتصنيع وتسويق أجهزة اطفاء حريق لتلبية الطلب المتزايد في السوق المصري." },
   "about.story.p2": { en: "Through continuous improvement, Meteory acquired technology and international experience, launching its flagship laboratory with focus on the stringiest quality measures. Today, Meteory is one of the top 3 in the market, ISO 9001:2000 SGS certified, and holds the Egyptian Quality Mark. Our lineup has expanded to cover FOAM, AEROSOL, WATER SPRAY, SPRINKLER, CO2, FM 200, and all types of fire cabinets.", ar: "من خلال التحسين المستمر، اكتسبت ميتيوري التكنولوجيا والخبرة الدولية، وأطلقت مختبرها الرئيسي مع التركيز على أكثر معايير الجودة صرامة. اليوم، تعد ميتيوري واحدة من أكبر 3 شركات في السوق، وحاصلة على شهادة ISO 9001:2000 SGS وعلامة الجودة المصرية. توسعت تشكيلتنا لتشمل الرغوة، الأيروسول، رذاذ الماء، الرشاشات، ثاني أكسيد الكربون، FM 200، وجميع أنواع صناديق الحريق." },
   "about.mission.title": { en: "Our Mission", ar: "مهمتنا" },
   "about.mission.quote": { en: "\"Best Protection is more than just a slogan, it’s a way of life for METEORY. Keeping you safe and your property secure is our business. We build our business for the long term, ensuring environmental sustainability and community support.\"", ar: "\"الحماية الأفضل ليست مجرد شعار، إنها أسلوب حياة لـ METEORY. الحفاظ على سلامتك وتأمين ممتلكاتك هو عملنا. نبني عملنا للمدى الطويل، ونضمن الاستدامة البيئية ودعم المجتمع.\"" },
@@ -195,7 +195,7 @@ const translations: Record<string, { en: string; ar: string }> = {
   "calc.report.preparedFor": { en: "Prepared For", ar: "تم الإعداد لـ" },
   "calc.report.facility": { en: "Facility Details", ar: "تفاصيل المنشأة" },
   "calc.report.results": { en: "Assessment Results", ar: "نتائج التقييم" },
-  "calc.report.total": { en: "Total Extinguishers", ar: "إجمالي الطفايات" },
+  "calc.report.total": { en: "Total Extinguishers", ar: "إجمالي الأجهزة اطفاء حريق" },
   "calc.report.recType": { en: "Recommended Type", ar: "النوع الموصى به" },
   "calc.export": { en: "Export PDF Report", ar: "تصدير تقرير PDF" },
   

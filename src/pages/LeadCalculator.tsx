@@ -80,7 +80,7 @@ export default function LeadCalculator() {
         selector: '[data-tour="choose-tool"]',
         title: isAr ? "اختر الأداة" : "Choose the right tool",
         body: isAr
-          ? "ابدأ باختيار نوع الحساب: طفايات، FM-200، رشاشات، خرطوم، أو حنفيات." 
+          ? "ابدأ باختيار نوع الحساب: أجهزة اطفاء حريق، FM-200، رشاشات، خرطوم، أو حنفيات." 
           : "Start by selecting what you’re sizing: extinguishers, FM‑200, sprinklers, hose reels, or hydrants.",
       },
       {
@@ -178,7 +178,7 @@ export default function LeadCalculator() {
       titleEn: "Travel distance (layout) not evaluated",
       titleAr: "مسافة الوصول (التوزيع) غير مُقَيَّمة",
       detailEn: "Extinguisher placement must satisfy max travel distances (e.g., 22.9m for Class A and 15.2m for Class B) based on the final floor plan.",
-      detailAr: "توزيع الطفايات يجب أن يحقق مسافات وصول قصوى (مثل 22.9م للفئة A و15.2م للفئة B) بناءً على مخطط الدور النهائي.",
+      detailAr: "توزيع الأجهزة اطفاء حريق يجب أن يحقق مسافات وصول قصوى (مثل 22.9م للفئة A و15.2م للفئة B) بناءً على مخطط الدور النهائي.",
     });
 
     return checks;
@@ -775,7 +775,7 @@ export default function LeadCalculator() {
 
               <div className="grid md:grid-cols-3 gap-6 text-center">
                 <div className="p-4 bg-secondary rounded-lg border border-border">
-                  <div className="text-sm uppercase font-bold text-muted-foreground mb-1">{language === "en" ? "Total Extinguishers" : "إجمالي الطفايات"}</div>
+                  <div className="text-sm uppercase font-bold text-muted-foreground mb-1">{language === "en" ? "Total Extinguishers" : "إجمالي الأجهزة اطفاء حريق"}</div>
                   <div className="text-4xl font-heading font-bold text-foreground">{ext.area ? extResults.total : "—"}</div>
                 </div>
                 <div className="p-4 bg-secondary rounded-lg border border-border">

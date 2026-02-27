@@ -184,7 +184,7 @@ export default function Resources() {
               </h2>
               <p className="text-muted-foreground mt-3 max-w-2xl">
                 {language === "ar"
-                  ? "حاسبة سريعة تساعدكم على تحديد عدد الطفايات المبدئي وتجهيز طلب عرض سعر." 
+                  ? "حاسبة سريعة تساعدكم على تحديد عدد الأجهزة اطفاء حريق المبدئي وتجهيز طلب عرض سعر." 
                   : "A fast sizing tool to estimate extinguisher quantities and generate a quote-ready request."}
               </p>
             </div>

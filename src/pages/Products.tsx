@@ -73,7 +73,7 @@ export default function Products() {
               icon: SlidersHorizontal,
               title: language === "ar" ? "اختر الحل" : "Pick the system",
               body: language === "ar"
-                ? "طفايات، خزائن، أو أنظمة إطفاء مُهندسة مثل FM-200." 
+                ? "أجهزة اطفاء حريق، خزائن، أو أنظمة إطفاء مُهندسة مثل FM-200." 
                 : "Extinguishers, cabinets, or engineered systems like FM‑200.",
             },
             {
@@ -148,7 +148,7 @@ export default function Products() {
                            ? (product.subCategory === "co2" ? "CO2" : product.subCategory === "powder" ? "بودرة" : product.subCategory === "foam" ? "رغوة" : product.subCategory)
                            : (product.subCategory === "co2" ? "CO2" : product.subCategory === "powder" ? "Dry Powder" : product.subCategory === "foam" ? "Foam" : product.subCategory))
                        : (language === "ar"
-                           ? (product.category === "extinguisher" ? "طفايات" : product.category === "cabinet" ? "خزائن" : "أنظمة")
+                           ? (product.category === "extinguisher" ? "أجهزة اطفاء حريق" : product.category === "cabinet" ? "خزائن" : "أنظمة")
                            : (product.category === "extinguisher" ? "Extinguishers" : product.category === "cabinet" ? "Cabinets" : "Systems"))}
                    </div>
                    <h2 className="text-3xl font-heading font-bold uppercase text-foreground mb-4">

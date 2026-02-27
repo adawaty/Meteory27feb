@@ -31,7 +31,7 @@ const industries = [
     descEn:
       "Life-safety focused solutions: evacuation readiness, compliant extinguishers, and suppression for critical areas.",
     descAr:
-      "حلول تركز على سلامة الأرواح: جاهزية الإخلاء، طفايات مطابقة للاشتراطات، وإخماد للمناطق الحرجة.",
+      "حلول تركز على سلامة الأرواح: جاهزية الإخلاء، أجهزة اطفاء حريق مطابقة للاشتراطات، وإخماد للمناطق الحرجة.",
   },
   {
     key: "datacenters",
