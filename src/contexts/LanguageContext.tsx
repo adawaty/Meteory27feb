@@ -24,6 +24,10 @@ const translations: Record<string, { en: string; ar: string }> = {
   "nav.contact": { en: "Contact", ar: "اتصل بنا" },
   "nav.quote": { en: "Get Quote", ar: "طلب عرض سعر" },
   "nav.iso": { en: "ISO 9001:2015 Certified Manufacturer", ar: "حاصلة على شهادة ISO 9001:2015" },
+  "nav.compliance": {
+    en: "ISO 9001:2015 • UL/FM (pumps & accessories)",
+    ar: "ISO 9001:2015 • UL/FM (للمضخات والملحقات)"
+  },
 
   // Footer
   "footer.rights": { en: "All rights reserved.", ar: "جميع الحقوق محفوظة." },

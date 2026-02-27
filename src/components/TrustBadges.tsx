@@ -21,11 +21,15 @@ export default function TrustBadges() {
             <Clock className="h-4 w-4 text-primary" /> {t("50+ Years", "أكثر من 50 سنة")}
           </div>
           <div className="rounded-lg border border-slate-200 bg-white px-2 py-2 flex items-center gap-2 text-[11px] font-bold">
-            <ShieldCheck className="h-4 w-4 text-primary" /> {t("UL Certified", "معتمد UL")}
+            <ShieldCheck className="h-4 w-4 text-primary" /> {t("UL/FM", "UL/FM")}
           </div>
           <div className="rounded-lg border border-slate-200 bg-white px-2 py-2 flex items-center gap-2 text-[11px] font-bold">
-            <ShieldCheck className="h-4 w-4 text-primary" /> {t("FM Approved", "معتمد FM")}
+            <ShieldCheck className="h-4 w-4 text-primary" /> {t("Pumps & Acc.", "مضخات وملحقات")}
           </div>
+        </div>
+
+        <div className="mt-2 text-[10px] leading-snug text-slate-500">
+          {t("UL/FM applies to pumps & accessories.", "UL/FM للمضخات والملحقات.")}
         </div>
       </div>
     </div>

@@ -34,7 +34,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       {/* Top Bar - Industrial Info */}
       <div className="bg-secondary text-foreground py-2 px-4 text-[11px] font-medium hidden md:flex justify-between items-center">
-        <span>{t("nav.iso")}</span>
+        <span>{t("nav.compliance")}</span>
         <div className="flex gap-4">
           <span className="flex items-center gap-2" dir="ltr"><Phone className="h-3 w-3" /> {COMPANY_INFO.phones.mobile}</span>
           <span className="flex items-center gap-2"><Mail className="h-3 w-3" /> {COMPANY_INFO.email}</span>
@@ -173,7 +173,7 @@ export function Footer() {
         </div>
       </div>
       <div className="container px-4 mt-16 pt-8 border-t border-white/10 text-center text-xs text-muted-foreground font-mono">
-        © {new Date().getFullYear()} Meteory. {t("footer.rights")} ISO 9001:2015 Certified.
+        © {new Date().getFullYear()} Meteory. {t("footer.rights")} ISO 9001:2015 • UL/FM (pumps & accessories).
       </div>
     </footer>
   );
