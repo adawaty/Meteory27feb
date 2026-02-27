@@ -1,10 +1,16 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X, Phone, Mail, Globe, Facebook, Linkedin } from "lucide-react";
+import { Menu, X, Phone, Mail, Globe, Facebook, Linkedin, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { COMPANY_INFO } from "@/data/company";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoFullEn from "@/assets/branding/meteory-logo-full-en.png";
 import logoFullAr from "@/assets/branding/meteory-logo-full-ar.png";
@@ -14,15 +20,15 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { t, language, setLanguage } = useLanguage();
 
+  // Keep primary navigation procurement-focused.
+  // Move About/Projects under a single Company menu to reduce cognitive load.
   const navItems = [
     { label: t("nav.home"), href: "/" },
-    { label: t("nav.about"), href: "/about" },
     { label: t("nav.products"), href: "/products" },
-    { label: t("nav.projects"), href: "/projects" },
     { label: t("nav.industries"), href: "/industries" },
     { label: t("nav.services"), href: "/services" },
     { label: t("nav.resources"), href: "/resources" },
-    { label: t("nav.calculator"), href: "/calculator" },
+    { label: t("nav.tools"), href: "/calculator" },
     { label: t("nav.contact"), href: "/contact" },
   ];
 
@@ -50,8 +56,8 @@ export function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-5 rtl:space-x-reverse text-[15px] font-medium">
           {navItems.map((item) => (
-            <Link 
-              key={item.href} 
+            <Link
+              key={item.href}
               href={item.href}
               className={cn(
                 "transition-colors hover:text-foreground",
@@ -61,6 +67,28 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+
+          {/* Company dropdown (reduces nav noise) */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className={cn(
+                  "inline-flex items-center gap-1.5 transition-colors hover:text-foreground",
+                  location === "/about" || location === "/projects" ? "text-foreground ui-underline-red font-semibold" : "text-muted-foreground"
+                )}
+              >
+                {t("nav.company")} <ChevronDown className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-48">
+              <DropdownMenuItem asChild>
+                <Link href="/about">{t("nav.about")}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/projects">{t("nav.projects")}</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           
           <Button 
             variant="ghost" 
@@ -104,6 +132,17 @@ export function Navbar() {
             className="md:hidden border-t bg-background overflow-hidden"
           >
             <nav className="flex flex-col space-y-4 p-4">
+              <div className="pt-2 border-b border-border/60 pb-3">
+                <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t("nav.company")}</div>
+                <div className="mt-3 grid gap-2">
+                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium tracking-wide hover:text-primary block py-2">
+                    {t("nav.about")}
+                  </Link>
+                  <Link href="/projects" onClick={() => setIsOpen(false)} className="text-lg font-medium tracking-wide hover:text-primary block py-2">
+                    {t("nav.projects")}
+                  </Link>
+                </div>
+              </div>
               {navItems.map((item) => (
                 <Link 
                   key={item.href} 

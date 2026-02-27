@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
 import { Building2, CheckCircle2, ChevronLeft, ChevronRight, Factory, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { saveLead } from "@/lib/db";
@@ -28,7 +29,33 @@ export default function Quote() {
     name: "",
     email: "",
     phone: "",
+    notes: "",
   });
+
+  // Prefill from calculator handoff (Peak-End: seamless next action)
+  useEffect(() => {
+    const raw = sessionStorage.getItem("meteory_quote_prefill_v1");
+    if (!raw) return;
+    try {
+      const p = JSON.parse(raw);
+      sessionStorage.removeItem("meteory_quote_prefill_v1");
+
+      setForm((f) => ({
+        ...f,
+        name: p?.name || f.name,
+        email: p?.email || f.email,
+        phone: p?.phone || f.phone,
+        facilityType: p?.facilityType || f.facilityType,
+        facilitySize: p?.facilitySize || f.facilitySize,
+        productInterest: p?.productInterest || f.productInterest,
+        notes: p?.notes ? String(p.notes) : f.notes,
+      }));
+
+      toast.success(language === "en" ? "Prefilled from calculator" : "تم تعبئة النموذج من الحاسبة");
+    } catch {
+      // ignore
+    }
+  }, [language]);
 
   const next = () => setStep((s) => Math.min(3, s + 1));
   const back = () => setStep((s) => Math.max(1, s - 1));
@@ -52,6 +79,7 @@ export default function Quote() {
         product_interest: form.productInterest,
         urgency: form.urgency,
         city: form.city,
+        notes: form.notes,
       },
     });
     setSaving(false);
@@ -244,6 +272,25 @@ export default function Quote() {
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 md:col-span-2">
+                    <Label>{language === "en" ? "Notes / Requirements" : "ملاحظات / متطلبات"}</Label>
+                    <Textarea
+                      value={form.notes}
+                      onChange={(e) => setForm({ ...form, notes: e.target.value })}
+                      placeholder={
+                        language === "ar"
+                          ? "مثال: مضخات UL/FM، مخطط الموقع، موعد المعاينة…"
+                          : "Example: UL/FM pumps, site plan, inspection deadline…"
+                      }
+                      className="min-h-[120px]"
+                    />
+                    <div className="text-xs text-muted-foreground">
+                      {language === "ar"
+                        ? "إذا كنت قادمًا من الحاسبة، سيتم إدراج ملخص النتائج هنا تلقائياً."
+                        : "If you came from the calculator, the estimate summary will appear here automatically."}
                     </div>
                   </div>
                 </div>

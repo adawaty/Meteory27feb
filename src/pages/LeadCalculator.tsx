@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "wouter";
 import { toast } from "sonner";
-import { Calculator, Check, Download, Droplets, Flame, Printer, Sprout, Wind, AlertTriangle, BadgeCheck, HelpCircle } from "lucide-react";
+import { Calculator, Check, Download, Droplets, Flame, Printer, Sprout, Wind, AlertTriangle, BadgeCheck, HelpCircle, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -61,6 +62,7 @@ function safeNum(v: string) {
 
 export default function LeadCalculator() {
   const { language } = useLanguage();
+  const [, setLocation] = useLocation();
   const logo = language === "ar" ? logoFullAr : logoFullEn;
 
   const [activeApp, setActiveApp] = useState<AppId>("extinguishers");
@@ -529,6 +531,64 @@ export default function LeadCalculator() {
     }
   };
 
+  const buildQuotePrefill = () => {
+    const base = {
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone,
+      source: "calculator",
+      app: activeApp,
+    } as any;
+
+    if (activeApp === "extinguishers") {
+      return {
+        ...base,
+        facilityType: ext.facilityType,
+        facilitySize: ext.area,
+        productInterest: "Fire Extinguishers",
+        notes: `Calculator: Extinguishers\nFacility: ${ext.facilityType}\nArea: ${ext.area} m²\nFloors: ${ext.floors}\nHazard: ${ext.hazardLevel}\nTotal extinguishers: ${extResults.total}\nRecommended type: ${extResults.type}`,
+      };
+    }
+
+    if (activeApp === "fm200") {
+      return {
+        ...base,
+        productInterest: "FM-200 Suppression",
+        notes: `Calculator: FM-200\nRoom: ${fm.length}×${fm.width}×${fm.height} m\nTemp: ${fm.tempC}°C\nConc: ${fm.conc}%\nSafety factor: ${fm.safetyFactor}\nVolume: ${fmResults.V.toFixed(2)} m³\nAgent (with SF): ${fmResults.finalKg.toFixed(2)} kg`,
+      };
+    }
+
+    if (activeApp === "sprinklers") {
+      return {
+        ...base,
+        productInterest: "Sprinkler System",
+        notes: `Calculator: Sprinklers\nRoom: ${sp.length}×${sp.width} m\nSpacing: ${spResults.sx.toFixed(2)}×${spResults.sy.toFixed(2)} m\nArea: ${spResults.area.toFixed(2)} m²\nRecommended heads: ${spResults.recommendedHeads}`, 
+      };
+    }
+
+    if (activeApp === "hosereel") {
+      return {
+        ...base,
+        productInterest: "Fire Hose Reel",
+        notes: `Calculator: Hose Reel\nSite area: ${hr.siteArea} m²\nHose length: ${hr.hoseLength} m\nCoverage radius: ${hrResults.r} m\nEstimated reels: ${hrResults.reels}`,
+      };
+    }
+
+    return {
+      ...base,
+      productInterest: "Fire Hydrant",
+      notes: `Calculator: Hydrant\nBuilding: ${hy.length}×${hy.width} m\nMax spacing (planning): ${hyResults.maxSpacing_m} m\nEstimated hydrants: ${hyResults.estimatedHydrants}`,
+    };
+  };
+
+  const startQuoteFromCalculator = () => {
+    // Always allow quote handoff (even without contact), but include what we have.
+    const payload = buildQuotePrefill();
+    sessionStorage.setItem("meteory_quote_prefill_v1", JSON.stringify(payload));
+    toast.success(language === "en" ? "Opening quote form…" : "جارٍ فتح نموذج عرض السعر…");
+    setLocation("/quote");
+  };
+
   const handlePrint = () => {
     if (!isRevealed(activeApp)) {
       toast.error(language === "en" ? "Generate the report first (enter contact details)" : "أنشئ التقرير أولاً (أدخل بيانات الاتصال)" );
@@ -855,6 +915,9 @@ export default function LeadCalculator() {
                 {saving ? (language === "en" ? "Saving..." : "جاري الحفظ...") : !isRevealed(activeApp) ? (language === "en" ? "Generate/Update Printable Report" : "إنشاء/تحديث تقرير قابل للطباعة" ) : (language === "en" ? "Update Report" : "تحديث التقرير") }
               </Button>
               </div>
+              <Button onClick={startQuoteFromCalculator} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" /> {language === "en" ? "Request Quote" : "اطلب عرض سعر"}
+              </Button>
               <Button onClick={handlePrint} disabled={!isRevealed(activeApp)} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
                 <Printer className="h-4 w-4" /> {language === "en" ? "Print Report" : "طباعة التقرير"}
               </Button>
@@ -921,6 +984,9 @@ export default function LeadCalculator() {
             <CardFooter className="flex flex-col md:flex-row gap-3">
               <Button onClick={revealAndSave} disabled={saving} className="w-full h-12 font-semibold rounded-md">
                 {saving ? (language === "en" ? "Saving..." : "جاري الحفظ...") : !isRevealed(activeApp) ? (language === "en" ? "Generate/Update Printable Report" : "إنشاء/تحديث تقرير قابل للطباعة" ) : (language === "en" ? "Update Report" : "تحديث التقرير") }
+              </Button>
+              <Button onClick={startQuoteFromCalculator} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" /> {language === "en" ? "Request Quote" : "اطلب عرض سعر"}
               </Button>
               <Button onClick={handlePrint} disabled={!isRevealed(activeApp)} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
                 <Printer className="h-4 w-4" /> {language === "en" ? "Print" : "طباعة"}
@@ -1014,6 +1080,9 @@ export default function LeadCalculator() {
               <Button onClick={revealAndSave} disabled={saving} className="w-full h-12 font-semibold rounded-md">
                 {saving ? (language === "en" ? "Saving..." : "جاري الحفظ...") : !isRevealed(activeApp) ? (language === "en" ? "Generate/Update Printable Report" : "إنشاء/تحديث تقرير قابل للطباعة" ) : (language === "en" ? "Update Report" : "تحديث التقرير") }
               </Button>
+              <Button onClick={startQuoteFromCalculator} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" /> {language === "en" ? "Request Quote" : "اطلب عرض سعر"}
+              </Button>
               <Button onClick={handlePrint} disabled={!isRevealed(activeApp)} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
                 <Printer className="h-4 w-4" /> {language === "en" ? "Print" : "طباعة"}
               </Button>
@@ -1064,6 +1133,9 @@ export default function LeadCalculator() {
             <CardFooter className="flex flex-col md:flex-row gap-3">
               <Button onClick={revealAndSave} disabled={saving} className="w-full h-12 font-semibold rounded-md">
                 {saving ? (language === "en" ? "Saving..." : "جاري الحفظ...") : !isRevealed(activeApp) ? (language === "en" ? "Generate/Update Printable Report" : "إنشاء/تحديث تقرير قابل للطباعة" ) : (language === "en" ? "Update Report" : "تحديث التقرير") }
+              </Button>
+              <Button onClick={startQuoteFromCalculator} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" /> {language === "en" ? "Request Quote" : "اطلب عرض سعر"}
               </Button>
               <Button onClick={handlePrint} disabled={!isRevealed(activeApp)} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
                 <Printer className="h-4 w-4" /> {language === "en" ? "Print" : "طباعة"}
@@ -1138,6 +1210,9 @@ export default function LeadCalculator() {
             <CardFooter className="flex flex-col md:flex-row gap-3">
               <Button onClick={revealAndSave} disabled={saving} className="w-full h-12 font-semibold rounded-md">
                 {saving ? (language === "en" ? "Saving..." : "جاري الحفظ...") : !isRevealed(activeApp) ? (language === "en" ? "Generate/Update Printable Report" : "إنشاء/تحديث تقرير قابل للطباعة" ) : (language === "en" ? "Update Report" : "تحديث التقرير") }
+              </Button>
+              <Button onClick={startQuoteFromCalculator} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
+                <ArrowRight className="h-4 w-4 rtl:rotate-180" /> {language === "en" ? "Request Quote" : "اطلب عرض سعر"}
               </Button>
               <Button onClick={handlePrint} disabled={!isRevealed(activeApp)} variant="outline" className="w-full h-12 font-semibold rounded-md gap-2">
                 <Printer className="h-4 w-4" /> {language === "en" ? "Print" : "طباعة"}

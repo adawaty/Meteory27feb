@@ -10,6 +10,7 @@ import Contact from "@/pages/Contact";
 import Projects from "@/pages/Projects";
 import Industries from "@/pages/Industries";
 import Resources from "@/pages/Resources";
+import Certificates from "@/pages/Certificates";
 import LeadCalculator from "@/pages/LeadCalculator";
 import Quote from "@/pages/Quote";
 import Datasheet from "@/pages/Datasheet";
@@ -65,6 +66,7 @@ function AppRoutes() {
               <Route path="/projects" component={Projects} />
               <Route path="/industries" component={Industries} />
               <Route path="/resources" component={Resources} />
+              <Route path="/certificates" component={Certificates} />
               <Route path="/calculator" component={LeadCalculator} />
               <Route path="/quote" component={Quote} />
               <Route path="/products/:id/datasheet" component={Datasheet} />

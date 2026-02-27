@@ -52,13 +52,17 @@ export default function Home() {
                 {t("hero.desc")}
               </motion.p>
 
+              <motion.div variants={StaggerItem} className="text-sm text-foreground font-medium">
+                {t("hero.proof")}
+              </motion.div>
+
               <motion.div variants={StaggerItem} className="flex flex-col sm:flex-row gap-3 pt-6">
                 <Button
                   asChild
                   size="lg"
                   className="bg-primary hover:bg-primary/92 rounded-md h-12 px-6 text-base font-semibold"
                 >
-                  <Link href="/products">{t("hero.cta.products")}</Link>
+                  <Link href="/quote">{t("hero.cta.contact")}</Link>
                 </Button>
 
                 <Button
@@ -67,7 +71,16 @@ export default function Home() {
                   size="lg"
                   className="rounded-md h-12 px-6 text-base font-semibold border-border hover:bg-secondary"
                 >
-                  <Link href="/contact">{t("hero.cta.contact")}</Link>
+                  <Link href="/resources">{t("hero.cta.resources")}</Link>
+                </Button>
+
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="lg"
+                  className="rounded-md h-12 px-6 text-base font-semibold"
+                >
+                  <Link href="/calculator">{t("hero.cta.tools")}</Link>
                 </Button>
               </motion.div>
             </StaggerContainer>

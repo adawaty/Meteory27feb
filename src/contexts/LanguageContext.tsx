@@ -42,11 +42,23 @@ const translations: Record<string, { en: string; ar: string }> = {
 
   // Home Hero
   "hero.est": { en: "Est. 1979", ar: "تأسست 1979" },
-  "hero.title": { en: "The Unrivaled Leader in", ar: "الرائد بلا منازع في" },
-  "hero.subtitle": { en: "Fire Safety", ar: "أنظمة إطفاء الحريق" },
-  "hero.desc": { en: "Protecting lives and property across industries with precision-engineered firefighting solutions.", ar: "حماية الأرواح والممتلكات في مختلف الصناعات بحلول مكافحة حرائق هندسية دقيقة." },
-  "hero.cta.products": { en: "Explore Products", ar: "تصفح المنتجات" },
-  "hero.cta.contact": { en: "Contact Us", ar: "اتصل بنا" },
+  "hero.title": { en: "Industrial-Grade", ar: "حماية" },
+  "hero.subtitle": { en: "Fire Protection — Built for Compliance", ar: "منشآت — مبنية على الالتزام بالمعايير" },
+  "hero.desc": {
+    en: "Fire extinguishers, cabinets, suppression systems, and pump accessories—engineered for inspections, reliability, and fast procurement.",
+    ar: "طفايات وخزائن وأنظمة إخماد وملحقات مضخات—مصممة للاعتمادات، الاعتمادية، وسرعة التوريد."
+  },
+  "hero.cta.products": { en: "Browse Products", ar: "تصفح المنتجات" },
+  "hero.cta.contact": { en: "Get a Quote", ar: "اطلب عرض سعر" },
+  "hero.cta.resources": { en: "Download Datasheets", ar: "تحميل الداتا شيت" },
+  "hero.cta.tools": { en: "Engineering Tools", ar: "أدوات هندسية" },
+  "hero.proof": {
+    en: "Response-focused • Site survey support • Compliance-ready submittals",
+    ar: "استجابة سريعة • دعم معاينة الموقع • ملفات اعتماد جاهزة"
+  },
+  "nav.company": { en: "Company", ar: "الشركة" },
+  "nav.tools": { en: "Engineering Tools", ar: "أدوات هندسية" },
+
 
   // Home Stats
   "stats.years": { en: "Years Experience", ar: "سنوات خبرة" },
@@ -173,6 +185,7 @@ const translations: Record<string, { en: string; ar: string }> = {
   
   // Tools
   "nav.calculator": { en: "Safety Calculator", ar: "حاسبة السلامة" },
+  "nav.calculatorShort": { en: "Tools", ar: "أدوات" },
   "common.print": { en: "Print PDF", ar: "طباعة PDF" },
   "common.back": { en: "Back to Products", ar: "عودة للمنتجات" },
 
