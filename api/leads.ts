@@ -1,5 +1,10 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { Pool } from "@neondatabase/serverless";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import ws from "ws";
+
+// Neon serverless driver needs a WebSocket implementation in Node runtimes.
+// Vercel Node functions don't provide one by default.
+neonConfig.webSocketConstructor = ws;
 
 function getPool() {
   const url = process.env.DATABASE_URL;
