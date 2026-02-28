@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
+import ExplodedFm200 from "@/components/ExplodedFm200";
 import { Link } from "wouter";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -204,6 +205,16 @@ export default function Products() {
                   </div>
                 )}
                 
+                {/* Interactive exploded view for complex systems */}
+                {product.id === "system-fm200" && (
+                  <div className="pt-2">
+                    <div className="text-sm font-bold uppercase tracking-widest text-foreground mb-3">
+                      {language === "ar" ? "عرض تفاعلي" : "Interactive"}
+                    </div>
+                    <ExplodedFm200 />
+                  </div>
+                )}
+
                 {/* Engineering resources */}
                 <div className="pt-2">
                   <div className="text-sm font-bold uppercase tracking-widest text-foreground mb-3">
