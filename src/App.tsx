@@ -12,6 +12,8 @@ import Industries from "@/pages/Industries";
 import Resources from "@/pages/Resources";
 import Certificates from "@/pages/Certificates";
 import BuildQuote from "@/pages/BuildQuote";
+import Codes from "@/pages/Codes";
+import CodeArticleTextileFactoryEgypt from "@/pages/codes/EgyptTextileFactory";
 import LeadCalculator from "@/pages/LeadCalculator";
 import Quote from "@/pages/Quote";
 import Datasheet from "@/pages/Datasheet";
@@ -69,6 +71,8 @@ function AppRoutes() {
               <Route path="/resources" component={Resources} />
               <Route path="/certificates" component={Certificates} />
               <Route path="/build-quote" component={BuildQuote} />
+              <Route path="/codes" component={Codes} />
+              <Route path="/codes/egypt-fire-code-textile-factory" component={CodeArticleTextileFactoryEgypt} />
               <Route path="/calculator" component={LeadCalculator} />
               <Route path="/quote" component={Quote} />
               <Route path="/products/:id/datasheet" component={Datasheet} />

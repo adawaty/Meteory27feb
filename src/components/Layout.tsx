@@ -30,6 +30,7 @@ export function Navbar() {
     { label: t("nav.services"), href: "/services" },
     { label: t("nav.resources"), href: "/resources" },
     { label: t("nav.tools"), href: "/calculator" },
+    { label: language === "ar" ? "الأكواد" : "Codes", href: "/codes" },
     { label: t("nav.contact"), href: "/contact" },
   ];
 
