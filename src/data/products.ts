@@ -90,7 +90,7 @@ export const productsRaw: Product[] = [
   {
     id: "co2-portable",
     name: "CO2 Fire Extinguisher (Portable)",
-    nameAr: "طفاية ثاني أكسيد الكربون CO2 (محمولة)",
+    nameAr: "جهاز اطفاء حريق ثاني أكسيد الكربون CO2 (محمولة)",
 
     category: "extinguisher",
     subCategory: "co2",
@@ -123,7 +123,7 @@ export const productsRaw: Product[] = [
   {
     id: "co2-trolley",
     name: "CO2 Fire Extinguisher (Trolley)",
-    nameAr: "طفاية ثاني أكسيد الكربون CO2 (عربة)",
+    nameAr: "جهاز اطفاء حريق ثاني أكسيد الكربون CO2 (عربة)",
 
     category: "extinguisher",
     subCategory: "co2",
@@ -145,7 +145,7 @@ export const productsRaw: Product[] = [
   {
     id: "powder-stored",
     name: "Dry Powder (Stored Pressure)",
-    nameAr: "طفاية بودرة جافة (ضغط مخزن)",
+    nameAr: "جهاز اطفاء حريق بودرة جافة (ضغط مخزن)",
 
     category: "extinguisher",
     subCategory: "powder",
@@ -176,7 +176,7 @@ export const productsRaw: Product[] = [
   {
     id: "powder-cartridge",
     name: "Dry Powder (External Cartridge)",
-    nameAr: "طفاية بودرة جافة (خرطوش خارجي)",
+    nameAr: "جهاز اطفاء حريق بودرة جافة (خرطوش خارجي)",
 
     category: "extinguisher",
     subCategory: "powder",
@@ -194,7 +194,7 @@ export const productsRaw: Product[] = [
   {
     id: "powder-automatic",
     name: "Automatic Dry Powder",
-    nameAr: "طفاية بودرة جافة أوتوماتيك",
+    nameAr: "جهاز اطفاء حريق بودرة جافة أوتوماتيك",
 
     category: "extinguisher",
     subCategory: "powder",
@@ -214,7 +214,7 @@ export const productsRaw: Product[] = [
   {
     id: "powder-trolley",
     name: "Trolley Dry Powder",
-    nameAr: "طفاية بودرة جافة (عربة)",
+    nameAr: "جهاز اطفاء حريق بودرة جافة (عربة)",
 
     category: "extinguisher",
     subCategory: "powder",
@@ -233,7 +233,7 @@ export const productsRaw: Product[] = [
   {
     id: "foam-trolley",
     name: "Foam Fire Extinguisher",
-    nameAr: "طفاية رغوة (AFFF)",
+    nameAr: "جهاز اطفاء حريق رغوة (AFFF)",
 
     category: "extinguisher",
     subCategory: "foam",
@@ -284,7 +284,7 @@ export const productsRaw: Product[] = [
     category: "cabinet",
     subCategory: "cabinet-steel",
     description: "Vertical or horizontal double cabinet for hose and extinguisher.",
-    descriptionAr: "دولاب مزدوج رأسي أو أفقي للخرطوم وطفاية الحريق.",
+    descriptionAr: "دولاب مزدوج رأسي أو أفقي للخرطوم وجهاز اطفاء حريق.",
 
     image: photo_cabinet_double,
     datasheet: ds_cabinet_double,
