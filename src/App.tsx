@@ -14,6 +14,9 @@ import Resources from "@/pages/Resources";
 import Certificates from "@/pages/Certificates";
 import BuildQuote from "@/pages/BuildQuote";
 import Codes from "@/pages/Codes";
+import SystemsLab from "@/pages/SystemsLab";
+import BimLibrary from "@/pages/BimLibrary";
+import Game from "@/pages/Game";
 import CodeArticleTextileFactoryEgypt from "@/pages/codes/EgyptTextileFactory";
 import CodeArticleWarehouseTenthRamadan from "@/pages/codes/Warehouse10thRamadan";
 import CodeArticleCommercialKitchenNewCairo from "@/pages/codes/CommercialKitchenNewCairo";
@@ -81,6 +84,9 @@ function AppRoutes() {
               <Route path="/projects" component={Projects} />
               <Route path="/industries" component={Industries} />
               <Route path="/resources" component={Resources} />
+              <Route path="/bim-library" component={BimLibrary} />
+              <Route path="/systems-lab" component={SystemsLab} />
+              <Route path="/game" component={Game} />
               <Route path="/certificates" component={Certificates} />
               <Route path="/build-quote" component={BuildQuote} />
               <Route path="/codes" component={Codes} />

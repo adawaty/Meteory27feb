@@ -29,6 +29,9 @@ export function Navbar() {
     { label: t("nav.industries"), href: "/industries" },
     { label: t("nav.services"), href: "/services" },
     { label: t("nav.resources"), href: "/resources" },
+    { label: language === "ar" ? "مكتبة BIM" : "BIM Library", href: "/bim-library" },
+    { label: language === "ar" ? "معمل الأنظمة" : "Systems Lab", href: "/systems-lab" },
+    { label: language === "ar" ? "لعبة الحريق" : "Fire Game", href: "/game" },
     { label: t("nav.tools"), href: "/calculator" },
     { label: language === "ar" ? "الأكواد" : "Codes", href: "/codes" },
     { label: t("nav.contact"), href: "/contact" },
@@ -124,8 +127,8 @@ export function Navbar() {
           </Button>
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        {/* Mobile Actions */}
+        <div className="flex items-center gap-2 md:hidden">
           <Button 
             variant="ghost" 
             size="icon" 
@@ -133,6 +136,19 @@ export function Navbar() {
             className="rounded-full w-8 h-8"
           >
             <Globe className="h-4 w-4" />
+          </Button>
+
+          {/* Quote cart is critical on mobile (was missing) */}
+          <Button asChild variant="ghost" size="icon" className="rounded-full w-9 h-9" title={language === "ar" ? "عرض عرض السعر" : "View quote"}>
+            <Link href="/build-quote" className="relative">
+              <ShoppingCart className="h-5 w-5" />
+              {cartApi.count > 0 && (
+                <span className="absolute -top-2 -right-2 h-5 min-w-5 px-1 rounded-full bg-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center">
+                  {cartApi.count}
+                </span>
+              )}
+              <span className="sr-only">{t("common.buildQuote")}</span>
+            </Link>
           </Button>
           <button onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X /> : <Menu />}
@@ -150,6 +166,18 @@ export function Navbar() {
             className="md:hidden border-t bg-background overflow-hidden"
           >
             <nav className="flex flex-col space-y-4 p-4">
+              <div className="grid gap-3 pb-4 border-b border-border/60">
+                <Button asChild className="rounded-none bg-primary hover:bg-primary/90 font-bold uppercase tracking-widest">
+                  <Link href="/build-quote" onClick={() => setIsOpen(false)}>
+                    {t("common.buildQuote")}
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="rounded-none">
+                  <Link href="/quote" onClick={() => setIsOpen(false)}>
+                    {t("nav.quote")}
+                  </Link>
+                </Button>
+              </div>
               <div className="pt-2 border-b border-border/60 pb-3">
                 <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t("nav.company")}</div>
                 <div className="mt-3 grid gap-2">
