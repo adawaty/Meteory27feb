@@ -3,12 +3,99 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, AlertTriangle, CheckCircle2 } from "lucide-react";
+import Seo from "@/components/Seo";
+
+const SITE_URL = "https://meteory-eg.com";
 
 export default function CodeArticleTextileFactoryEgypt() {
   const { language } = useLanguage();
 
+  const title =
+    language === "ar"
+      ? "اشتراطات الحماية من الحريق لمصنع نسيج في مصر (قائمة عملية) | Meteory"
+      : "Fire Code Requirements for a Textile Factory in Egypt (Practical Checklist) | Meteory";
+
+  const description =
+    language === "ar"
+      ? "قائمة تخطيطية تساعدك على تجهيز ملف الاعتماد وتقليل الزيارات المتكررة لمصنع نسيج في مصر."
+      : "A planning checklist to prepare a compliance pack for a textile factory in Egypt and reduce back-and-forth during approvals.";
+
+  const canonicalPath = "/codes/egypt-fire-code-textile-factory";
+
+  const faq =
+    language === "ar"
+      ? [
+          {
+            q: "هل هذه المقالة بديل عن الاستشاري والجهة المختصة؟",
+            a: "لا. هي إرشادية للتخطيط فقط. اعتمد دائماً على الاستشاري المرخص ومتطلبات الجهة المختصة (الحماية المدنية/الـ AHJ).",
+          },
+          {
+            q: "ما أهم شيء لتقليل تأخير الاعتماد؟",
+            a: "ملف مستندات منظم: مخطط، جدول معدات، داتا شيت، وشهادات لكل خط منتج—مع وضوح الموديلات والكميات.",
+          },
+          {
+            q: "هل تختلف المتطلبات بين المدن؟",
+            a: "نعم. التفاصيل تختلف حسب المدينة ونوع النشاط والجهة المختصة. استخدم القائمة كبداية ثم راجع المتطلبات النهائية.",
+          },
+        ]
+      : [
+          {
+            q: "Is this article a substitute for a licensed consultant or AHJ?",
+            a: "No. It’s planning guidance only. Always validate with the AHJ and a licensed fire consultant.",
+          },
+          {
+            q: "What reduces approval delays the most?",
+            a: "A clean documentation pack: plan, equipment schedule, datasheets, and approvals/certificates per product line with clear model references.",
+          },
+          {
+            q: "Do requirements vary by city?",
+            a: "Yes. Details vary by city, AHJ, and the facility’s exact operations. Use this as a starting point then confirm final requirements.",
+          },
+        ];
+
+  const jsonLdArticle = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    inLanguage: language === "ar" ? "ar" : "en",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}${canonicalPath}`,
+    },
+    author: {
+      "@type": "Organization",
+      name: "Meteory",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Meteory",
+      url: SITE_URL,
+    },
+  };
+
+  const jsonLdFaq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background pb-24">
+      <Seo
+        title={title}
+        description={description}
+        canonicalPath={canonicalPath}
+        jsonLd={[jsonLdArticle, jsonLdFaq]}
+      />
       <div className="bg-secondary py-16 border-b border-border">
         <div className="container px-4">
           <div className="ui-label text-muted-foreground mb-3">

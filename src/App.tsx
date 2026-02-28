@@ -1,7 +1,8 @@
 import { Navbar, Footer } from "@/components/Layout";
 import TrustBadges from "@/components/TrustBadges";
 import WhatsAppFab from "@/components/WhatsAppFab";
-import { Route, Switch, Router, useLocation } from "wouter";
+import { Route, Switch, Router, useLocation, type BaseLocationHook } from "wouter";
+import { useBrowserLocation } from "wouter/use-browser-location";
 import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import About from "@/pages/About";
@@ -14,6 +15,9 @@ import Certificates from "@/pages/Certificates";
 import BuildQuote from "@/pages/BuildQuote";
 import Codes from "@/pages/Codes";
 import CodeArticleTextileFactoryEgypt from "@/pages/codes/EgyptTextileFactory";
+import CodeArticleWarehouseTenthRamadan from "@/pages/codes/Warehouse10thRamadan";
+import CodeArticleCommercialKitchenNewCairo from "@/pages/codes/CommercialKitchenNewCairo";
+import CodeArticleLogisticsWarehouseAlexandria from "@/pages/codes/LogisticsWarehouseAlexandria";
 import LeadCalculator from "@/pages/LeadCalculator";
 import Quote from "@/pages/Quote";
 import Datasheet from "@/pages/Datasheet";
@@ -25,8 +29,16 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import { HelmetProvider } from "react-helmet-async";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
+// Normalize static preview paths (e.g. /dist/index.html) to /
+const useNormalizedLocation: BaseLocationHook = (opts) => {
+  const [location, navigate] = useBrowserLocation(opts as any);
+  const normalized = location.replace(/\/(dist\/)?index\.html$/, "/");
+  return [normalized, navigate];
+};
 
 // Component to handle scroll on route change
 function ScrollToTop() {
@@ -73,6 +85,9 @@ function AppRoutes() {
               <Route path="/build-quote" component={BuildQuote} />
               <Route path="/codes" component={Codes} />
               <Route path="/codes/egypt-fire-code-textile-factory" component={CodeArticleTextileFactoryEgypt} />
+              <Route path="/codes/warehouse-10th-of-ramadan" component={CodeArticleWarehouseTenthRamadan} />
+              <Route path="/codes/commercial-kitchen-new-cairo" component={CodeArticleCommercialKitchenNewCairo} />
+              <Route path="/codes/logistics-warehouse-alexandria" component={CodeArticleLogisticsWarehouseAlexandria} />
               <Route path="/calculator" component={LeadCalculator} />
               <Route path="/quote" component={Quote} />
               <Route path="/products/:id/datasheet" component={Datasheet} />
@@ -95,15 +110,17 @@ function AppRoutes() {
 function App() {
   return (
     <ErrorBoundary>
+      <HelmetProvider>
       <ThemeProvider defaultTheme="light">
         <LanguageProvider>
           <TooltipProvider>
-            <Router>
+            <Router hook={useNormalizedLocation}>
               <AppRoutes />
             </Router>
           </TooltipProvider>
         </LanguageProvider>
       </ThemeProvider>
+      </HelmetProvider>
     </ErrorBoundary>
   );
 }

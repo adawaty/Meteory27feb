@@ -301,8 +301,9 @@ export default function Products() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3 pt-4">
-                  <Button asChild size="lg" className="rounded-md bg-primary hover:bg-primary/92 ui-shine">
+                {/* Mobile-first: stack actions so “Add to Quote” never gets pushed off-screen */}
+                <div className="grid gap-3 pt-4 sm:flex sm:flex-wrap sm:gap-3">
+                  <Button asChild size="lg" className="rounded-md bg-primary hover:bg-primary/92 ui-shine w-full sm:w-auto">
                     <Link href="/quote">{t("common.requestQuote")}</Link>
                   </Button>
 
@@ -310,7 +311,7 @@ export default function Products() {
                     type="button"
                     size="lg"
                     variant="secondary"
-                    className="rounded-md"
+                    className="rounded-md w-full sm:w-auto"
                     onClick={() => {
                       addToCart(
                         {
@@ -329,10 +330,10 @@ export default function Products() {
                     <ShoppingCart className="h-4 w-4" /> {t("common.addToQuote")}
                   </Button>
 
-                  <Button asChild size="lg" variant="outline" className="rounded-md border-foreground/20 cursor-pointer">
+                  <Button asChild size="lg" variant="outline" className="rounded-md border-foreground/20 cursor-pointer w-full sm:w-auto">
                     <Link href="/build-quote">{t("common.viewInQuote")}</Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="rounded-md border-foreground/20 cursor-pointer">
+                  <Button asChild variant="outline" size="lg" className="rounded-md border-foreground/20 cursor-pointer w-full sm:w-auto">
                     <Link href={`/products/${product.id}/datasheet`}>
                       <FileText className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" /> {t("common.download")}
                     </Link>
