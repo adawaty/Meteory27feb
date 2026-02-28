@@ -1,0 +1,18 @@
+{
+  "co2-portable": {
+    "w": 220,
+    "h": 650
+  },
+  "powder-stored": {
+    "w": 220,
+    "h": 650
+  },
+  "cabinet-single": {
+    "w": 650,
+    "h": 850
+  },
+  "cabinet-double": {
+    "w": 900,
+    "h": 850
+  }
+}

@@ -17,6 +17,9 @@ import Codes from "@/pages/Codes";
 import SystemsLab from "@/pages/SystemsLab";
 import BimLibrary from "@/pages/BimLibrary";
 import Game from "@/pages/Game";
+import Games from "@/pages/Games";
+import HydrantRun from "@/pages/games/HydrantRun";
+import InspectionSprint from "@/pages/games/InspectionSprint";
 import CodeArticleTextileFactoryEgypt from "@/pages/codes/EgyptTextileFactory";
 import CodeArticleWarehouseTenthRamadan from "@/pages/codes/Warehouse10thRamadan";
 import CodeArticleCommercialKitchenNewCairo from "@/pages/codes/CommercialKitchenNewCairo";
@@ -87,6 +90,9 @@ function AppRoutes() {
               <Route path="/bim-library" component={BimLibrary} />
               <Route path="/systems-lab" component={SystemsLab} />
               <Route path="/game" component={Game} />
+              <Route path="/games" component={Games} />
+              <Route path="/games/hydrant-run" component={HydrantRun} />
+              <Route path="/games/inspection-sprint" component={InspectionSprint} />
               <Route path="/certificates" component={Certificates} />
               <Route path="/build-quote" component={BuildQuote} />
               <Route path="/codes" component={Codes} />

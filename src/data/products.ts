@@ -30,6 +30,7 @@ export interface Product {
     bimRevit?: string; // RVT/RFA
     bimIfc?: string; // IFC
     manual?: string; // PDF manual/installation
+    notes?: string; // freeform notes
   };
 
   /** Simple key/value specification table (for cabinets, etc.) */
@@ -109,6 +110,11 @@ export const productsRaw: Product[] = [
 
     image: photo_co2,
     datasheet: ds_co2,
+    resources: {
+      cad2d: "/bim/cad/co2-portable.dxf",
+      bimRevit: "#",
+      notes: "Starter CAD only (approx dimensions). Revit family in progress; pending exact manufacturer dimensions.",
+    },
     applications: ["Class B (Flammable Liquids)", "Class C (Electrical)", "Class E"],
     features: [
       "Seamless steel cylinder",
@@ -164,6 +170,11 @@ export const productsRaw: Product[] = [
 
     image: photo_powder_stored,
     datasheet: ds_powder_stored,
+    resources: {
+      cad2d: "/bim/cad/powder-stored.dxf",
+      bimRevit: "#",
+      notes: "Starter CAD only (approx dimensions). Revit family in progress; pending exact manufacturer dimensions.",
+    },
     applications: ["Class A (Solids)", "Class B (Liquids)", "Class C (Gas)"],
     features: [
       "Non-toxic dry chemical powder",
@@ -274,6 +285,11 @@ export const productsRaw: Product[] = [
 
     image: photo_cabinet_single,
     datasheet: ds_cabinet_single,
+    resources: {
+      cad2d: "/bim/cad/cabinet-single.dxf",
+      bimRevit: "#",
+      notes: "Starter CAD only (approx dimensions). Revit family in progress; pending exact manufacturer dimensions.",
+    },
     specTable: {
       "Cabinet Type": "Standard",
       "Cabinet Dimensions (WxHxD) cm": "80 × 80 × 30 (or custom)",
@@ -298,6 +314,12 @@ export const productsRaw: Product[] = [
 
     image: photo_cabinet_double,
     datasheet: ds_cabinet_double,
+    resources: {
+      cad2d: "/bim/cad/cabinet-double.dxf",
+      bimRevit: "#",
+      notes: "Starter CAD only (approx dimensions). Revit family in progress; pending exact manufacturer dimensions.",
+    },
+
     specTable: {
       "Cabinet Type": "Standard",
       "Cabinet Dimensions (WxHxD) cm": "160 × 80 × 30 (or custom)",

@@ -1,11 +1,13 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X, Phone, Mail, Globe, Facebook, Linkedin, ChevronDown, ShoppingCart } from "lucide-react";
+import { Menu, X, Phone, Mail, Globe, Facebook, Linkedin, ChevronDown, ShoppingCart, Search } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { COMPANY_INFO } from "@/data/company";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useQuoteCart } from "@/hooks/use-quote-cart";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,13 +33,35 @@ export function Navbar() {
     { label: t("nav.resources"), href: "/resources" },
     { label: language === "ar" ? "مكتبة BIM" : "BIM Library", href: "/bim-library" },
     { label: language === "ar" ? "معمل الأنظمة" : "Systems Lab", href: "/systems-lab" },
-    { label: language === "ar" ? "لعبة الحريق" : "Fire Game", href: "/game" },
+    { label: language === "ar" ? "الألعاب" : "Games", href: "/games" },
     { label: t("nav.tools"), href: "/calculator" },
     { label: language === "ar" ? "الأكواد" : "Codes", href: "/codes" },
     { label: t("nav.contact"), href: "/contact" },
   ];
 
   const cartApi = useQuoteCart();
+  const [mobileQuery, setMobileQuery] = useState("");
+
+  const mobileItems = useMemo(() => {
+    const base = [
+      { section: "primary", label: t("nav.home"), href: "/" },
+      { section: "catalog", label: t("nav.products"), href: "/products" },
+      { section: "catalog", label: t("nav.industries"), href: "/industries" },
+      { section: "services", label: t("nav.services"), href: "/services" },
+      { section: "services", label: language === "ar" ? "معمل الأنظمة" : "Systems Lab", href: "/systems-lab" },
+      { section: "services", label: language === "ar" ? "مكتبة BIM" : "BIM Library", href: "/bim-library" },
+      { section: "services", label: language === "ar" ? "الألعاب" : "Games", href: "/games" },
+      { section: "tools", label: t("nav.tools"), href: "/calculator" },
+      { section: "tools", label: language === "ar" ? "الأكواد" : "Codes", href: "/codes" },
+      { section: "company", label: t("nav.about"), href: "/about" },
+      { section: "company", label: t("nav.projects"), href: "/projects" },
+      { section: "company", label: t("nav.contact"), href: "/contact" },
+    ];
+
+    const q = mobileQuery.trim().toLowerCase();
+    if (!q) return base;
+    return base.filter((it) => it.label.toLowerCase().includes(q));
+  }, [language, mobileQuery, t]);
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "ar" : "en");
@@ -178,27 +202,96 @@ export function Navbar() {
                   </Link>
                 </Button>
               </div>
-              <div className="pt-2 border-b border-border/60 pb-3">
-                <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{t("nav.company")}</div>
-                <div className="mt-3 grid gap-2">
-                  <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium tracking-wide hover:text-primary block py-2">
-                    {t("nav.about")}
-                  </Link>
-                  <Link href="/projects" onClick={() => setIsOpen(false)} className="text-lg font-medium tracking-wide hover:text-primary block py-2">
-                    {t("nav.projects")}
-                  </Link>
+
+              <div className="pt-2">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Input
+                    value={mobileQuery}
+                    onChange={(e) => setMobileQuery(e.target.value)}
+                    placeholder={language === "ar" ? "بحث…" : "Search…"}
+                    className="pl-9 rounded-md"
+                  />
                 </div>
               </div>
-              {navItems.map((item) => (
-                <Link 
-                  key={item.href} 
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium tracking-wide hover:text-primary block py-2"
-                >
-                  {item.label}
-                </Link>
-              ))}
+
+              <Accordion type="multiple" className="w-full">
+                <AccordionItem value="catalog">
+                  <AccordionTrigger>{language === "ar" ? "المنتجات" : "Catalog"}</AccordionTrigger>
+                  <AccordionContent className="grid">
+                    {mobileItems
+                      .filter((i) => i.section === "catalog")
+                      .map((i) => (
+                        <Link
+                          key={i.href}
+                          href={i.href}
+                          onClick={() => setIsOpen(false)}
+                          className="text-base font-medium tracking-wide hover:text-primary block py-2"
+                        >
+                          {i.label}
+                        </Link>
+                      ))}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="services">
+                  <AccordionTrigger>{language === "ar" ? "الخدمات" : "Services"}</AccordionTrigger>
+                  <AccordionContent className="grid">
+                    {mobileItems
+                      .filter((i) => i.section === "services")
+                      .map((i) => (
+                        <Link
+                          key={i.href}
+                          href={i.href}
+                          onClick={() => setIsOpen(false)}
+                          className="text-base font-medium tracking-wide hover:text-primary block py-2"
+                        >
+                          {i.label}
+                        </Link>
+                      ))}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="tools">
+                  <AccordionTrigger>{language === "ar" ? "الأدوات" : "Tools"}</AccordionTrigger>
+                  <AccordionContent className="grid">
+                    {mobileItems
+                      .filter((i) => i.section === "tools")
+                      .map((i) => (
+                        <Link
+                          key={i.href}
+                          href={i.href}
+                          onClick={() => setIsOpen(false)}
+                          className="text-base font-medium tracking-wide hover:text-primary block py-2"
+                        >
+                          {i.label}
+                        </Link>
+                      ))}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="company">
+                  <AccordionTrigger>{t("nav.company")}</AccordionTrigger>
+                  <AccordionContent className="grid">
+                    {mobileItems
+                      .filter((i) => i.section === "company")
+                      .map((i) => (
+                        <Link
+                          key={i.href}
+                          href={i.href}
+                          onClick={() => setIsOpen(false)}
+                          className="text-base font-medium tracking-wide hover:text-primary block py-2"
+                        >
+                          {i.label}
+                        </Link>
+                      ))}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+
+              {mobileQuery.trim() && mobileItems.length === 0 && (
+                <div className="text-sm text-muted-foreground">{language === "ar" ? "لا توجد نتائج" : "No matches"}</div>
+              )}
             </nav>
           </motion.div>
         )}

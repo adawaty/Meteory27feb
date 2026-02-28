@@ -75,13 +75,13 @@ export default function BimLibrary() {
         <div className="space-y-6">
           <Card className="rounded-none border-border/60 shadow-sm">
             <CardHeader className="pb-3">
-              <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{t("Whats available now", "المتاح الآن")}</div>
+              <div className="text-sm font-bold uppercase tracking-widest text-muted-foreground">{t("What’s available now", "المتاح الآن")}</div>
             </CardHeader>
             <CardContent className="grid gap-4">
               <div className="text-sm text-muted-foreground leading-relaxed">
                 {t(
-                  "Today we provide: datasheets, submittal-ready product info, and a structured request path for CAD/Revit/IFC deliverables.",
-                  "نوفر حالياً: PDF بيانات فنية + معلومات تجهيز ملفات الاعتماد، ومسار طلب منظم لملفات CAD/Revit/IFC."
+                  "New: starter DXF CAD drawings are now available for selected models (more coming).",
+                  "جديد: ملفات CAD بصيغة DXF متاحة الآن لبعض الموديلات (وسيتم إضافة المزيد)."
                 )}
               </div>
               <div className="grid sm:grid-cols-2 gap-3">

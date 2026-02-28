@@ -12,6 +12,7 @@ function getPool() {
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
+    res.setHeader("Cache-Control", "no-store");
     const pool = getPool();
     if (!pool) return res.status(503).json({ success: false, error: "Database not configured" });
 
@@ -19,7 +20,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const result = await pool.query(
         "SELECT id, name, score, created_at FROM leaderboard ORDER BY score DESC, created_at ASC LIMIT 50"
       );
-      return res.status(200).json({ success: true, data: result.rows });
+
+      // Ensure the top seeded row is branded consistently
+      const rows = result.rows.map((r: any) => {
+        if (String(r.id) === "1") return { ...r, name: "MHDLABIB" };
+        return r;
+      });
+
+      return res.status(200).json({ success: true, data: rows });
     }
 
     if (req.method === "POST") {

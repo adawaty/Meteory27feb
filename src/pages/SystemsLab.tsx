@@ -26,9 +26,23 @@ export default function SystemsLab() {
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
             {language === "ar"
-              ? "هذه محاكاة بصرية للتخطيط فقط وليست بديلاً عن تصميم هندسي معتمد."
-              : "These are planning-grade visual explanations (not a substitute for engineered design / AHJ approval)."}
+              ? "شرح بسيط ومرئي لكيف يعمل كل نظام. مناسب لغير المهندسين لفهم الصورة العامة قبل طلب عرض سعر."
+              : "Plain-language, visual walkthroughs of how each system works — designed so non-engineers can understand the environment before requesting a quote."}
           </p>
+          <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm">
+            <div className="rounded-md border border-border bg-background px-4 py-3">
+              <div className="font-semibold">{language === "ar" ? "1) اختر النظام" : "1) Pick a system"}</div>
+              <div className="text-muted-foreground mt-1">{language === "ar" ? "FM-200 أو CO2 أو رشاشات..." : "FM-200, CO2, sprinklers, etc."}</div>
+            </div>
+            <div className="rounded-md border border-border bg-background px-4 py-3">
+              <div className="font-semibold">{language === "ar" ? "2) اتبع الخطوات" : "2) Follow the steps"}</div>
+              <div className="text-muted-foreground mt-1">{language === "ar" ? "اضغط على الخطوة لرؤية ما يحدث" : "Tap a step to see what happens"}</div>
+            </div>
+            <div className="rounded-md border border-border bg-background px-4 py-3">
+              <div className="font-semibold">{language === "ar" ? "3) ابدأ عرض السعر" : "3) Build a quote"}</div>
+              <div className="text-muted-foreground mt-1">{language === "ar" ? "اختر المنتجات المناسبة" : "Choose the right products"}</div>
+            </div>
+          </div>
         </div>
       </div>
 

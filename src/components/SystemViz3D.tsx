@@ -437,6 +437,19 @@ export default function SystemViz3D({ system }: { system: SystemId }) {
     ground.material = gMat;
     ground.position.y = 0;
 
+    // Add a simple "room" so non-engineers understand scale/context
+    const wallMat = new StandardMaterial("wall", scene);
+    wallMat.diffuseColor = Color3.FromHexString("#e5e7eb");
+    wallMat.specularColor = Color3.Black();
+
+    const backWall = MeshBuilder.CreateBox("wall_back", { width: 14, height: 4, depth: 0.12 }, scene);
+    backWall.position = new Vector3(0, 2, -4);
+    backWall.material = wallMat;
+
+    const sideWall = MeshBuilder.CreateBox("wall_side", { width: 0.12, height: 4, depth: 8 }, scene);
+    sideWall.position = new Vector3(-7, 2, 0);
+    sideWall.material = wallMat;
+
     const { root } = buildSystem(scene, system);
     root.position = new Vector3(0, 0, 0);
 
