@@ -20,8 +20,18 @@ export interface Product {
   description: string;
   descriptionAr?: string;
   image: string;
+
   /** Local PDF (imported) or external URL */
   datasheet?: string;
+
+  /** Engineering resources (optional). Use URLs or imported local assets. */
+  resources?: {
+    cad2d?: string; // DWG/DXF/PDF drawing
+    bimRevit?: string; // RVT/RFA
+    bimIfc?: string; // IFC
+    manual?: string; // PDF manual/installation
+  };
+
   /** Simple key/value specification table (for cabinets, etc.) */
   specTable?: Record<string, string>;
   specTableAr?: Record<string, string>;

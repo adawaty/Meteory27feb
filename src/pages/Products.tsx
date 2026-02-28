@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 import { Shield, SlidersHorizontal, BadgeCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Check, FileText, ShoppingCart } from "lucide-react";
+import { Check, FileText, ShoppingCart, Box, Layers, DraftingCompass } from "lucide-react";
 import { toast } from "sonner";
 import { addToCart } from "@/lib/quote-cart";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -204,6 +204,92 @@ export default function Products() {
                   </div>
                 )}
                 
+                {/* Engineering resources */}
+                <div className="pt-2">
+                  <div className="text-sm font-bold uppercase tracking-widest text-foreground mb-3">
+                    {language === "ar" ? "ملفات هندسية" : "Engineering Resources"}
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    <Button
+                      asChild
+                      variant={product.datasheet ? "outline" : "secondary"}
+                      className="rounded-md justify-start"
+                    >
+                      {product.datasheet ? (
+                        <Link href={`/products/${product.id}/datasheet`}>
+                          <FileText className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "PDF بيانات فنية" : "PDF datasheet"}
+                        </Link>
+                      ) : (
+                        <Link href="/contact">
+                          <FileText className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "اطلب PDF" : "Request PDF"}
+                        </Link>
+                      )}
+                    </Button>
+
+                    <Button
+                      asChild
+                      variant={product.resources?.cad2d ? "outline" : "secondary"}
+                      className="rounded-md justify-start"
+                    >
+                      {product.resources?.cad2d ? (
+                        <a href={product.resources.cad2d} target="_blank" rel="noreferrer">
+                          <DraftingCompass className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "CAD / رسم" : "CAD / drawing"}
+                        </a>
+                      ) : (
+                        <Link href="/contact">
+                          <DraftingCompass className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "اطلب CAD" : "Request CAD"}
+                        </Link>
+                      )}
+                    </Button>
+
+                    <Button
+                      asChild
+                      variant={product.resources?.bimRevit ? "outline" : "secondary"}
+                      className="rounded-md justify-start"
+                    >
+                      {product.resources?.bimRevit ? (
+                        <a href={product.resources.bimRevit} target="_blank" rel="noreferrer">
+                          <Box className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "Revit (RVT/RFA)" : "Revit (RVT/RFA)"}
+                        </a>
+                      ) : (
+                        <Link href="/contact">
+                          <Box className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "اطلب Revit" : "Request Revit"}
+                        </Link>
+                      )}
+                    </Button>
+
+                    <Button
+                      asChild
+                      variant={product.resources?.bimIfc ? "outline" : "secondary"}
+                      className="rounded-md justify-start"
+                    >
+                      {product.resources?.bimIfc ? (
+                        <a href={product.resources.bimIfc} target="_blank" rel="noreferrer">
+                          <Layers className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "BIM (IFC)" : "BIM (IFC)"}
+                        </a>
+                      ) : (
+                        <Link href="/contact">
+                          <Layers className="mr-2 h-4 w-4 rtl:ml-2 rtl:mr-0" />
+                          {language === "ar" ? "اطلب IFC" : "Request IFC"}
+                        </Link>
+                      )}
+                    </Button>
+                  </div>
+
+                  <div className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    {language === "ar"
+                      ? "لا ترى الملف؟ اطلبه وسنرسل لك الرابط المناسب للموديل خلال يوم عمل." 
+                      : "Don’t see the file? Request it and we’ll send the model-specific link within one business day."}
+                  </div>
+                </div>
+
                 <div className="flex flex-wrap gap-3 pt-4">
                   <Button asChild size="lg" className="rounded-md bg-primary hover:bg-primary/92 ui-shine">
                     <Link href="/quote">{t("common.requestQuote")}</Link>
