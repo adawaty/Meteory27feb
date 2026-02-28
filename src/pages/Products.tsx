@@ -6,7 +6,9 @@ import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 import { Shield, SlidersHorizontal, BadgeCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Check, FileText } from "lucide-react";
+import { Check, FileText, ShoppingCart } from "lucide-react";
+import { toast } from "sonner";
+import { addToCart } from "@/lib/quote-cart";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Table,
@@ -202,11 +204,36 @@ export default function Products() {
                   </div>
                 )}
                 
-                <div className="flex gap-4 pt-4">
+                <div className="flex flex-wrap gap-3 pt-4">
                   <Button asChild size="lg" className="rounded-md bg-primary hover:bg-primary/92 ui-shine">
-                    <Link href="/quote">
-                    {t("common.requestQuote")}
-                    </Link>
+                    <Link href="/quote">{t("common.requestQuote")}</Link>
+                  </Button>
+
+                  <Button
+                    type="button"
+                    size="lg"
+                    variant="secondary"
+                    className="rounded-md"
+                    onClick={() => {
+                      addToCart(
+                        {
+                          id: product.id,
+                          name: product.name,
+                          nameAr: product.nameAr,
+                          category: product.category,
+                          subCategory: product.subCategory,
+                          image: product.image,
+                        },
+                        1
+                      );
+                      toast.success(language === "ar" ? "تمت الإضافة إلى عرض السعر" : "Added to quote");
+                    }}
+                  >
+                    <ShoppingCart className="h-4 w-4" /> {t("common.addToQuote")}
+                  </Button>
+
+                  <Button asChild size="lg" variant="outline" className="rounded-md border-foreground/20 cursor-pointer">
+                    <Link href="/build-quote">{t("common.viewInQuote")}</Link>
                   </Button>
                   <Button asChild variant="outline" size="lg" className="rounded-md border-foreground/20 cursor-pointer">
                     <Link href={`/products/${product.id}/datasheet`}>

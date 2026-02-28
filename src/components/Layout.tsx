@@ -1,10 +1,11 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Menu, X, Phone, Mail, Globe, Facebook, Linkedin, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Mail, Globe, Facebook, Linkedin, ChevronDown, ShoppingCart } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { COMPANY_INFO } from "@/data/company";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useQuoteCart } from "@/hooks/use-quote-cart";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,6 +32,8 @@ export function Navbar() {
     { label: t("nav.tools"), href: "/calculator" },
     { label: t("nav.contact"), href: "/contact" },
   ];
+
+  const cartApi = useQuoteCart();
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "ar" : "en");
@@ -99,6 +102,20 @@ export function Navbar() {
           >
             <Globe className="h-4 w-4" />
             <span className="sr-only">Toggle Language</span>
+          </Button>
+
+          <Button asChild variant="ghost" className="rounded-full" title={language === "ar" ? "عرض عرض السعر" : "View quote"}>
+            <Link href="/build-quote" className="inline-flex items-center gap-2">
+              <span className="relative inline-flex">
+                <ShoppingCart className="h-5 w-5" />
+                {cartApi.count > 0 && (
+                  <span className="absolute -top-2 -right-2 h-5 min-w-5 px-1 rounded-full bg-primary text-primary-foreground text-[11px] font-bold flex items-center justify-center">
+                    {cartApi.count}
+                  </span>
+                )}
+              </span>
+              <span className="hidden lg:inline text-sm font-semibold">{t("common.buildQuote")}</span>
+            </Link>
           </Button>
 
           <Button asChild variant="default" className="bg-primary hover:bg-primary/90 rounded-md font-semibold">

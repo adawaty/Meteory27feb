@@ -114,6 +114,9 @@ const translations: Record<string, { en: string; ar: string }> = {
   "common.viewDetails": { en: "View Details", ar: "عرض التفاصيل" },
   "common.download": { en: "Datasheet", ar: "كتالوج البيانات" },
   "common.requestQuote": { en: "Request Quote", ar: "طلب عرض سعر" },
+  "common.addToQuote": { en: "Add to Quote", ar: "أضف لعرض السعر" },
+  "common.buildQuote": { en: "Build a Quote", ar: "ابنِ عرض سعر" },
+  "common.viewInQuote": { en: "View Quote", ar: "عرض عرض السعر" },
   
   // Projects
   "projects.title": { en: "Proven Excellence", ar: "تميز مثبت" },
