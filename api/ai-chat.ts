@@ -22,9 +22,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
 
-  const apiKey = process.env.OPENROUTER_API_KEY;
+  const apiKey =
+    process.env.OPENROUTER_API_KEY ||
+    process.env.OPENROUTER_KEY ||
+    process.env.OPENROUTER_API_TOKEN ||
+    process.env.OPENROUTER_TOKEN;
+
   if (!apiKey) {
-    return res.status(500).json({ success: false, error: "OPENROUTER_API_KEY missing" });
+    return res.status(503).json({
+      success: false,
+      error:
+        "OpenRouter key missing. Set OPENROUTER_API_KEY (recommended) in Vercel Environment Variables (Production + Preview).",
+    });
   }
 
   try {
@@ -79,7 +88,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       success: true,
       model: data?.model || model,
       content,
-      raw: data,
     });
   } catch (e: any) {
     console.error(e);

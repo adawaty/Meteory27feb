@@ -85,16 +85,18 @@ export default function AIAssistantWidget() {
         }),
       });
 
-      const data = await resp.json();
+      const data = await resp.json().catch(() => null);
       if (!resp.ok || !data?.success) {
-        throw new Error(data?.error || `HTTP ${resp.status}`);
+        const msg = (data && (data.error || data.message)) || `HTTP ${resp.status}`;
+        throw new Error(msg);
       }
 
       const assistantText = String(data?.content || "").trim();
       setMessages((prev) => [...prev, { role: "assistant", content: assistantText || ui.error }]);
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
-      setMessages((prev) => [...prev, { role: "assistant", content: ui.error }]);
+      const detail = e?.message ? ` (${e.message})` : "";
+      setMessages((prev) => [...prev, { role: "assistant", content: ui.error + detail }]);
     } finally {
       setLoading(false);
     }
