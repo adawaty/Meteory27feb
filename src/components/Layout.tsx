@@ -17,6 +17,7 @@ import {
 import { useLanguage } from "@/contexts/LanguageContext";
 import logoFullEn from "@/assets/branding/meteory-logo-full-en.png";
 import logoFullAr from "@/assets/branding/meteory-logo-full-ar.png";
+import AIAssistantWidget from "@/components/AIAssistantWidget";
 
 export function Navbar() {
   const [location] = useLocation();
@@ -68,7 +69,8 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+    <>
+      <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       {/* Top Bar - Industrial Info */}
       <div className="bg-secondary text-foreground py-2 px-4 text-[11px] font-medium hidden md:flex justify-between items-center">
         <span>{t("nav.compliance")}</span>
@@ -297,6 +299,8 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </header>
+      <AIAssistantWidget />
+    </>
   );
 }
 
